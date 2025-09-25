@@ -88,6 +88,18 @@ def init_db():
     conn.commit()
     conn.close()
 
+def upload_consent_to_db(campaign_id, uploader_id, file_path, signer_name, signer_email, checksum):
+    id_ = str(uuid.uuid4())
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute('''
+        INSERT INTO consent_files (id, campaign_id, uploader_id, file_path, signer_name, signer_email, signed_date, checksum)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    ''', (id_, campaign_id, uploader_id, file_path, signer_name, signer_email, datetime.now().isoformat(), checksum))
+    conn.commit()
+    conn.close()
+    return id_
+
 def create_campaign(name, description, owner_id, consent_file_id):
     id_ = str(uuid.uuid4())
     conn = sqlite3.connect(DB_PATH)
