@@ -13,7 +13,7 @@ A consent-first, configurable phishing simulation and awareness automation tool 
 - Privacy: 30-day data retention.
 
 ## Quickstart (Sandbox Mode)
-1. Clone repo: `git clone <repo>`
+1. Clone repo: `git clone https://github.com/kar-ik/phish-sim.git`
 2. Install: `pip install -e .`
 3. Run: `phish-sim --help`
 4. Create campaign: `phish-sim create-campaign --title "Test" --consent-path consent.pdf --passphrase "secret"`
